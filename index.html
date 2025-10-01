@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Anthony Colmenares - Analista de Datos & Desarrollador Web</title>
-    <meta name="description" content="Portafolio de Anthony Colmenares, analista de datos y desarrollador web con experiencia en SQL, BigQuery, Tableau, Power BI, Python, CSS, JavaScript, y certificaciones en Coursera y Coderhouse.">
-    <meta name="keywords" content="analista de datos, desarrollador web, SQL, BigQuery, Tableau, Power BI, Python, CSS, JavaScript, Google Data Analytics, Coderhouse, Santander Open Academy">
+    <meta name="description" content="Portafolio de Anthony Colmenares, analista de datos y desarrollador web junior en CABA, Argentina. Especializado en SQL, BigQuery, Tableau, Power BI, Python, CSS, JavaScript, con proyectos en Fórmula 1, Bellabeat, y desarrollo web. Certificado por Coursera, Coderhouse y Santander Open Academy.">
+    <meta name="keywords" content="analista de datos, desarrollador web, SQL, BigQuery, Tableau, Power BI, Python, CSS, JavaScript, Google Data Analytics, Coderhouse, Santander Open Academy, Fórmula 1, Bellabeat, Argentina, CABA">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
@@ -20,6 +20,34 @@
             background: url('https://www.transparenttextures.com/patterns/cubes.png'), #f0f4f8;
             color: #1E3A8A;
             overflow-x: hidden;
+        }
+
+        /* Preloader */
+        #preloader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #1E3A8A;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+        }
+
+        .loader {
+            border: 8px solid #f3f3f3;
+            border-top: 8px solid #F97316;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
         }
 
         nav {
@@ -144,49 +172,11 @@
             text-decoration: none;
             font-weight: 600;
             font-size: 1.1em;
+            margin: 0 10px;
         }
 
         .project-link:hover {
             text-decoration: underline;
-        }
-
-        .carousel {
-            position: relative;
-            overflow: hidden;
-            max-width: 100%;
-            margin-bottom: 15px;
-        }
-
-        .carousel-images {
-            display: flex;
-            transition: transform 0.5s ease;
-        }
-
-        .carousel-images img {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-            border-radius: 8px;
-        }
-
-        .carousel-btn {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            background: rgba(0, 0, 0, 0.5);
-            color: white;
-            border: none;
-            padding: 10px;
-            cursor: pointer;
-            font-size: 1.5em;
-        }
-
-        .prev-btn {
-            left: 10px;
-        }
-
-        .next-btn {
-            right: 10px;
         }
 
         form {
@@ -259,13 +249,15 @@
             .project-card iframe {
                 height: 200px;
             }
-            .carousel-images img {
-                height: 150px;
-            }
         }
     </style>
 </head>
 <body>
+    <!-- Preloader -->
+    <div id="preloader">
+        <div class="loader"></div>
+    </div>
+
     <!-- Barra de Navegación -->
     <nav>
         <ul>
@@ -306,45 +298,22 @@
         <div class="project-grid">
             <div class="project-card">
                 <h3>Análisis de Desempeño en Fórmula 1 2025</h3>
-                <iframe src="https://public.tableau.com/views/VISINGENERALDELCAMPEONATOYDESEMPEODEPILOTOSDELATEMPORADA2025DEF1/Historia2?:language=es-ES&:display_count=n&:origin=viz_share_link&:showVizHome=no" title="Dashboard Fórmula 1"></iframe>
-                <div class="carousel">
-                    <div class="carousel-images" id="carousel-f1">
-                        <img src="https://via.placeholder.com/300x200?text=Dashboard+Fórmula+1" alt="Dashboard Fórmula 1">
-                        <img src="https://via.placeholder.com/300x200?text=Gráfico+Puntos+F1" alt="Gráfico Fórmula 1">
-                    </div>
-                    <button class="carousel-btn prev-btn" onclick="moveCarousel('carousel-f1', -1)">&#10094;</button>
-                    <button class="carousel-btn next-btn" onclick="moveCarousel('carousel-f1', 1)">&#10095;</button>
-                </div>
+                <iframe src="https://public.tableau.com/views/VISINGENERALDELCAMPEONATOYDESEMPEODEPILOTOSDELATEMPORADA2025DEF1/Historia2?:language=es-ES&:display_count=n&:origin=viz_share_link&:showVizHome=no" title="Dashboard Fórmula 1" alt="Dashboard interactivo de análisis de desempeño de pilotos y equipos en la temporada 2025 de Fórmula 1"></iframe>
                 <p>Analicé el rendimiento de pilotos y equipos en la temporada 2025 de Fórmula 1 usando datos de la API de Ergast. Creé visualizaciones interactivas en Power BI y Google Sheets para mostrar tendencias en posiciones, puntos y circuitos.</p>
                 <a href="https://medium.com/@colmeony/%EF%B8%8F-an%C3%A1lisis-de-desempe%C3%B1o-en-el-campeonato-de-f%C3%B3rmula-1-2025-f8c36b822a56" class="project-link" target="_blank">Ver Detalles</a>
             </div>
             <div class="project-card">
-                <h3>Bellabeat: Análisis de Datos (Parte 1)</h3>
-                <iframe src="https://public.tableau.com/views/Graficosdelarelacinentreactividadcaloriasquemadasyhorariosdeactividad_/Historia2?:language=es-ES&:display_count=n&:origin=viz_share_link&:showVizHome=no" title="Dashboard Bellabeat 1"></iframe>
-                <div class="carousel">
-                    <div class="carousel-images" id="carousel-bellabeat1">
-                        <img src="https://via.placeholder.com/300x200?text=Dashboard+Bellabeat+1" alt="Dashboard Bellabeat 1">
-                        <img src="https://via.placeholder.com/300x200?text=Gráfico+Pasos" alt="Gráfico Pasos Bellabeat">
-                    </div>
-                    <button class="carousel-btn prev-btn" onclick="moveCarousel('carousel-bellabeat1', -1)">&#10094;</button>
-                    <button class="carousel-btn next-btn" onclick="moveCarousel('carousel-bellabeat1', 1)">&#10095;</button>
-                </div>
-                <p>Realicé un análisis de datos de actividad física para Bellabeat, identificando patrones en pasos y calorías diarias. Usé SQL y Tableau para limpiar datos y crear dashboards que apoyen estrategias de marketing.</p>
-                <a href="https://medium.com/@colmeony/reporte-an%C3%A1lisis-de-datos-para-impulsar-el-crecimiento-de-bellabeat-43c59991b573" class="project-link" target="_blank">Ver Detalles</a>
+                <h3>Análisis de Datos para Bellabeat</h3>
+                <iframe src="https://public.tableau.com/views/Graficosdelarelacinentreactividadcaloriasquemadasyhorariosdeactividad_/Historia2?:language=es-ES&:display_count=n&:origin=viz_share_link&:showVizHome=no" title="Dashboard Bellabeat" alt="Dashboard interactivo de análisis de actividad física para Bellabeat, mostrando patrones en pasos y calorías"></iframe>
+                <p>Realicé un análisis integral de datos de actividad física para Bellabeat, identificando patrones en pasos y calorías diarias con SQL y Tableau, y profundizando en tendencias de usuarios con Python y Power BI para proponer estrategias de marketing y crecimiento.</p>
+                <a href="https://medium.com/@colmeony/reporte-an%C3%A1lisis-de-datos-para-impulsar-el-crecimiento-de-bellabeat-43c59991b573" class="project-link" target="_blank">Ver Detalles Parte 1</a> | 
+                <a href="https://medium.com/@colmeony/portafolio-an%C3%A1lisis-de-datos-para-impulsar-el-crecimiento-de-bellabeat-ca53fb1211b8" class="project-link" target="_blank">Ver Detalles Parte 2</a>
             </div>
             <div class="project-card">
-                <h3>Bellabeat: Análisis de Datos (Parte 2)</h3>
-                <iframe src="https://public.tableau.com/views/Graficosdelarelacinentreactividadcaloriasquemadasyhorariosdeactividad_/Historia2?:language=es-ES&:display_count=n&:origin=viz_share_link&:showVizHome=no" title="Dashboard Bellabeat 2"></iframe>
-                <div class="carousel">
-                    <div class="carousel-images" id="carousel-bellabeat2">
-                        <img src="https://via.placeholder.com/300x200?text=Dashboard+Bellabeat+2" alt="Dashboard Bellabeat 2">
-                        <img src="https://via.placeholder.com/300x200?text=Gráfico+Tendencias" alt="Gráfico Tendencias Bellabeat">
-                    </div>
-                    <button class="carousel-btn prev-btn" onclick="moveCarousel('carousel-bellabeat2', -1)">&#10094;</button>
-                    <button class="carousel-btn next-btn" onclick="moveCarousel('carousel-bellabeat2', 1)">&#10095;</button>
-                </div>
-                <p>Continué el análisis de Bellabeat, profundizando en tendencias de usuarios y recomendaciones de negocio. Utilicé Python y Power BI para visualizaciones avanzadas y propuestas de crecimiento estratégico.</p>
-                <a href="https://medium.com/@colmeony/portafolio-an%C3%A1lisis-de-datos-para-impulsar-el-crecimiento-de-bellabeat-ca53fb1211b8" class="project-link" target="_blank">Ver Detalles</a>
+                <h3>Portafolio Web Personal</h3>
+                <iframe src="https://AnthonyColmenares.github.io/cv-AnthonyC" title="Portafolio Web" alt="Portafolio web personal con diseño responsivo y animaciones"></iframe>
+                <p>Desarrollé un portafolio web responsivo usando HTML, CSS y JavaScript, con animaciones, gráficos interactivos (Chart.js), y dashboards incrustados de Tableau Public. Optimicé el diseño para SEO y accesibilidad.</p>
+                <a href="https://github.com/AnthonyColmenares/cv-AnthonyC" class="project-link" target="_blank">Ver Código</a>
             </div>
         </div>
     </section>
@@ -352,10 +321,11 @@
     <!-- Sección Contacto -->
     <section id="contact">
         <h2><i class="fas fa-envelope"></i> Contacto</h2>
-        <form id="contactForm">
-            <input type="text" id="name" placeholder="Nombre" required>
-            <input type="email" id="email" placeholder="Correo Electrónico" required>
-            <textarea id="message" placeholder="Mensaje" required></textarea>
+        <form id="contactForm" action="https://formspree.io/f/xxxxxxxx" method="POST">
+            <input type="text" id="name" name="name" placeholder="Nombre" required>
+            <input type="email" id="email" name="email" placeholder="Correo Electrónico" required>
+            <textarea id="message" name="message" placeholder="Mensaje" required></textarea>
+            <input type="hidden" name="_next" value="https://AnthonyColmenares.github.io/cv-AnthonyC/#contact">
             <button type="submit" class="btn"><i class="fas fa-paper-plane"></i> Enviar</button>
         </form>
     </section>
@@ -368,11 +338,17 @@
         </p>
     </footer>
 
-    <button id="back-to-top" title="Volver arriba"><i class="fas fa-arrow-up"></i></button>
+    <button id="back-to-top" title="Volver arriba" aria-label="Volver al inicio de la página"><i class="fas fa-arrow-up"></i></button>
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script>
-        // Gráfico de habilidades (inspirado en eje dual de Tableau)
+        // Preloader
+        window.addEventListener('load', () => {
+            const preloader = document.getElementById('preloader');
+            preloader.style.display = 'none';
+        });
+
+        // Gráfico de habilidades
         document.addEventListener('DOMContentLoaded', () => {
             const ctx = document.getElementById('skillsChart').getContext('2d');
             new Chart(ctx, {
@@ -415,14 +391,6 @@
                 }
             });
 
-            // Formulario de contacto
-            const form = document.getElementById('contactForm');
-            form.addEventListener('submit', (e) => {
-                e.preventDefault();
-                alert('¡Mensaje enviado! Te contactaré pronto.');
-                form.reset();
-            });
-
             // Navegación suave
             document.querySelectorAll('a[href^="#"]').forEach(anchor => {
                 anchor.addEventListener('click', function(e) {
@@ -442,16 +410,6 @@
                 window.scrollTo({ top: 0, behavior: 'smooth' });
             });
         });
-
-        // Carrusel de imágenes
-        function moveCarousel(carouselId, direction) {
-            const carousel = document.getElementById(carouselId);
-            const images = carousel.children;
-            let currentIndex = parseInt(carousel.dataset.index || 0);
-            currentIndex = (currentIndex + direction + images.length) % images.length;
-            carousel.style.transform = `translateX(-${currentIndex * 100}%)`;
-            carousel.dataset.index = currentIndex;
-        }
     </script>
 </body>
 </html>
