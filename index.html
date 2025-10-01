@@ -369,7 +369,7 @@
             <div class="project-card">
                 <div class="project-content">
                     <h3>Análisis de Desempeño en Fórmula 1 2025</h3>
-                    <p>Analicé el rendimiento de pilotos y equipos en la temporada 2025 de Fórmula 1 usando datos de la API de Ergast. Creé visualizaciones interactivas en Power BI y Google Sheets para mostrar tendencias en posiciones, puntos y circuitos.</p>
+                    <p>Analicé el rendimiento de pilotos y equipos en la temporada 2025 de Fórmula 1 usando datos de la API de Ergast. Creé visualizaciones interactivas en Power BI y Tableau para mostrar tendencias en posiciones, puntos y circuitos.</p>
                     <a href="https://medium.com/@colmeony/%EF%B8%8F-an%C3%A1lisis-de-desempe%C3%B1o-en-el-campeonato-de-f%C3%B3rmula-1-2025-f8c36b822a56" class="project-link" target="_blank">Ver Detalles</a>
                 </div>
                 <img src="https://media.licdn.com/dms/image/v2/D4E12AQEot0yu8AeRfA/article-cover_image-shrink_720_1280/B4EZlfXWe5IUAI-/0/1758241581825?e=1762387200&v=beta&t=KwAa8uYEmhgJnMFVpDTpE1U7bKfxr03h0AnCpVPSTio" alt="Dashboard de análisis de Fórmula 1 2025 en Power BI">
@@ -378,7 +378,7 @@
                 <img src="https://i.ibb.co/nNc1sPdQ/Captura-de-pantalla-2025-10-01-203447.png" alt="Dashboard de análisis de actividad física para Bellabeat en Power BI">
                 <div class="project-content">
                     <h3>Análisis de Datos para Bellabeat</h3>
-                    <p>Realicé un análisis integral de datos de actividad física para Bellabeat, identificando patrones en pasos y calorías diarias con SQL y Tableau, y profundizando en tendencias de usuarios con Python y Power BI para proponer estrategias de marketing y crecimiento.</p>
+                    <p>Realicé un análisis integral de datos de actividad física para Bellabeat, identificando patrones en pasos y calorías diarias con SQL y Tableau para proponer estrategias de marketing y crecimiento.</p>
                     <a href="https://medium.com/@colmeony/reporte-an%C3%A1lisis-de-datos-para-impulsar-el-crecimiento-de-bellabeat-43c59991b573" class="project-link" target="_blank">Ver Detalles Parte 1</a> | 
                     <a href="https://medium.com/@colmeony/portafolio-an%C3%A1lisis-de-datos-para-impulsar-el-crecimiento-de-bellabeat-ca53fb1211b8" class="project-link" target="_blank">Ver Detalles Parte 2</a>
                 </div>
@@ -520,15 +520,7 @@
                             borderWidth: 1,
                             yAxisID: 'y'
                         },
-                        {
-                            label: 'Proyectos Completados',
-                            data: [5, 4, 3, 3, 4, 6, 5, 2, 3, 2],
-                            type: 'line',
-                            borderColor: 'rgba(249, 115, 22, 1)',
-                            borderWidth: 2,
-                            fill: false,
-                            yAxisID: 'y1'
-                        }
+                        
                     ]
                 },
                 options: {
@@ -537,12 +529,7 @@
                             beginAtZero: true,
                             title: { display: true, text: 'Competencia (%)' }
                         },
-                        y1: {
-                            beginAtZero: true,
-                            position: 'right',
-                            title: { display: true, text: 'Proyectos' },
-                            grid: { drawOnChartArea: false }
-                        }
+                        
                     }
                 }
             });
