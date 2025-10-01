@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anthony Colmenares - Analista de Datos & Desarrollador Web</title>
+    <meta name="description" content="Portafolio de Anthony Colmenares, analista de datos y desarrollador web junior en CABA, Argentina. Especializado en SQL, BigQuery, Tableau, Power BI, Python, CSS, JavaScript, con proyectos en Fórmula 1, Bellabeat, y desarrollo web. Certificado por Coursera, Coderhouse y Santander Open Academy.">
+    <meta name="keywords" content="analista de datos, desarrollador web, SQL, BigQuery, Tableau, Power BI, Python, CSS, JavaScript, Google Data Analytics, Coderhouse, Santander Open Academy, Fórmula 1, Bellabeat, Argentina, CABA">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background: url('https://www.transparenttextures.com/patterns/cubes.png'), #f0f4f8;
+            color: #1E3A8A;
+            overflow-x: hidden;
+        }
+
+        /* Preloader */
+        #preloader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #1E3A8A;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+        }
+
+        .loader {
+            border: 8px solid #f3f3f3;
+            border-top: 8px solid #F97316;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        nav {
+            background: linear-gradient(90deg, #1E3A8A, #3B82F6);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        nav ul {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            padding: 20px 0;
+        }
+
+        nav ul li {
+            margin: 0 25px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1em;
+            transition: color 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: #F97316;
+        }
+
+        section {
+            padding: 100px 20px;
+            text-align: center;
+            animation: fadeIn 1s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .hero {
+            background: linear-gradient(135deg, #1E3A8A, #F97316);
+            color: white;
+            padding: 120px 20px;
+            border-radius: 15px;
+            margin: 40px auto;
+            max-width: 900px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+        }
+
+        .hero h1 {
+            font-size: 3em;
+            margin-bottom: 15px;
+        }
+
+        .hero p {
+            font-size: 1.2em;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 25px;
+            background: #F97316;
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            margin-top: 25px;
+            font-weight: 600;
+            transition: transform 0.3s, background 0.3s;
+        }
+
+        .btn:hover {
+            background: #1E3A8A;
+            transform: scale(1.05);
+        }
+
+        .skills-container {
+            max-width: 700px;
+            margin: 0 auto;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .project-card {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .project-card:hover {
+            transform: scale(1.03);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+        }
+
+        .project-card iframe {
+            width: 100%;
+            height: 300px;
+            border: none;
+            border-radius: 8px;
+            margin-bottom: 15px;
+        }
+
+        .project-link {
+            color: #F97316;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1em;
+            margin: 0 10px;
+        }
+
+        .project-link:hover {
+            text-decoration: underline;
+        }
+
+        form {
+            max-width: 700px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        input, textarea {
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            font-size: 1.1em;
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        footer {
+            background: linear-gradient(90deg, #1E3A8A, #3B82F6);
+            color: white;
+            text-align: center;
+            padding: 30px;
+            margin-top: 60px;
+        }
+
+        footer a {
+            color: #F97316;
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 1.1em;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        #back-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #F97316;
+            color: white;
+            padding: 10px 15px;
+            border-radius: 50%;
+            display: none;
+            cursor: pointer;
+            font-size: 1.2em;
+        }
+
+        @media (max-width: 768px) {
+            nav ul {
+                flex-direction: column;
+                text-align: center;
+            }
+            nav ul li {
+                margin: 15px 0;
+            }
+            .hero {
+                padding: 80px 20px;
+            }
+            .project-card iframe {
+                height: 200px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Preloader -->
+    <div id="preloader">
+        <div class="loader"></div>
+    </div>
+
+    <!-- Barra de Navegación -->
+    <nav>
+        <ul>
+            <li><a href="#home"><i class="fas fa-home"></i> Inicio</a></li>
+            <li><a href="#about"><i class="fas fa-user"></i> Sobre Mí</a></li>
+            <li><a href="#skills"><i class="fas fa-tools"></i> Habilidades</a></li>
+            <li><a href="#projects"><i class="fas fa-project-diagram"></i> Proyectos</a></li>
+            <li><a href="#contact"><i class="fas fa-envelope"></i> Contacto</a></li>
+        </ul>
+    </nav>
+
+    <!-- Sección Inicio -->
+    <section id="home">
+        <div class="hero">
+            <h1>Anthony Colmenares</h1>
+            <p>Analista de Datos & Desarrollador Web | Certificado Coursera & Coderhouse</p>
+            <a href="cv.pdf" class="btn" download><i class="fas fa-download"></i> Descargar CV</a>
+        </div>
+    </section>
+
+    <!-- Sección Sobre Mí -->
+    <section id="about">
+        <h2><i class="fas fa-user-circle"></i> Sobre Mí</h2>
+        <p>Soy un analista de datos y desarrollador web junior con certificaciones en Google Data Analytics y BigQuery (Coursera), Desarrollo Web (HTML, CSS, JavaScript) de Coderhouse, y Power BI de Santander Open Academy. Con experiencia previa como gerente de tienda en Sambil, Caracas, y repartidor en Mercado Libre, combino habilidades técnicas en SQL, BigQuery, Tableau, Power BI, R, Python, Excel, Google Sheets, CSS, y JavaScript con una sólida capacidad de organización y análisis. Busco oportunidades remotas o híbridas en CABA, Argentina, para crear soluciones impactantes con datos y desarrollo web.</p>
+    </section>
+
+    <!-- Sección Habilidades -->
+    <section id="skills">
+        <h2><i class="fas fa-tools"></i> Habilidades</h2>
+        <div class="skills-container">
+            <canvas id="skillsChart" width="400" height="200"></canvas>
+        </div>
+    </section>
+
+    <!-- Sección Proyectos -->
+    <section id="projects">
+        <h2><i class="fas fa-project-diagram"></i> Proyectos</h2>
+        <div class="project-grid">
+            <div class="project-card">
+                <h3>Análisis de Desempeño en Fórmula 1 2025</h3>
+                <iframe src="https://public.tableau.com/views/VISINGENERALDELCAMPEONATOYDESEMPEODEPILOTOSDELATEMPORADA2025DEF1/Historia2?:language=es-ES&:display_count=n&:origin=viz_share_link&:showVizHome=no" title="Dashboard Fórmula 1" alt="Dashboard interactivo de análisis de desempeño de pilotos y equipos en la temporada 2025 de Fórmula 1"></iframe>
+                <p>Analicé el rendimiento de pilotos y equipos en la temporada 2025 de Fórmula 1 usando datos de la API de Ergast. Creé visualizaciones interactivas en Power BI y Google Sheets para mostrar tendencias en posiciones, puntos y circuitos.</p>
+                <a href="https://medium.com/@colmeony/%EF%B8%8F-an%C3%A1lisis-de-desempe%C3%B1o-en-el-campeonato-de-f%C3%B3rmula-1-2025-f8c36b822a56" class="project-link" target="_blank">Ver Detalles</a>
+            </div>
+            <div class="project-card">
+                <h3>Análisis de Datos para Bellabeat</h3>
+                <iframe src="https://public.tableau.com/views/Graficosdelarelacinentreactividadcaloriasquemadasyhorariosdeactividad_/Historia2?:language=es-ES&:display_count=n&:origin=viz_share_link&:showVizHome=no" title="Dashboard Bellabeat" alt="Dashboard interactivo de análisis de actividad física para Bellabeat, mostrando patrones en pasos y calorías"></iframe>
+                <p>Realicé un análisis integral de datos de actividad física para Bellabeat, identificando patrones en pasos y calorías diarias con SQL y Tableau, y profundizando en tendencias de usuarios con Python y Power BI para proponer estrategias de marketing y crecimiento.</p>
+                <a href="https://medium.com/@colmeony/reporte-an%C3%A1lisis-de-datos-para-impulsar-el-crecimiento-de-bellabeat-43c59991b573" class="project-link" target="_blank">Ver Detalles Parte 1</a> | 
+                <a href="https://medium.com/@colmeony/portafolio-an%C3%A1lisis-de-datos-para-impulsar-el-crecimiento-de-bellabeat-ca53fb1211b8" class="project-link" target="_blank">Ver Detalles Parte 2</a>
+            </div>
+            <div class="project-card">
+                <h3>Portafolio Web Personal</h3>
+                <iframe src="https://AnthonyColmenares.github.io/cv-AnthonyC" title="Portafolio Web" alt="Portafolio web personal con diseño responsivo y animaciones"></iframe>
+                <p>Desarrollé un portafolio web responsivo usando HTML, CSS y JavaScript, con animaciones, gráficos interactivos (Chart.js), y dashboards incrustados de Tableau Public. Optimicé el diseño para SEO y accesibilidad.</p>
+                <a href="https://github.com/AnthonyColmenares/cv-AnthonyC" class="project-link" target="_blank">Ver Código</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección Contacto -->
+    <section id="contact">
+        <h2><i class="fas fa-envelope"></i> Contacto</h2>
+        <form id="contactForm" action="https://formspree.io/f/xxxxxxxx" method="POST">
+            <input type="text" id="name" name="name" placeholder="Nombre" required>
+            <input type="email" id="email" name="email" placeholder="Correo Electrónico" required>
+            <textarea id="message" name="message" placeholder="Mensaje" required></textarea>
+            <input type="hidden" name="_next" value="https://AnthonyColmenares.github.io/cv-AnthonyC/#contact">
+            <button type="submit" class="btn"><i class="fas fa-paper-plane"></i> Enviar</button>
+        </form>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 - Anthony Colmenares | Analista de Datos & Desarrollador Web</p>
+        <p>
+            <a href="https://www.linkedin.com/in/anthony-colmenares-81728637b/" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a> | 
+            <a href="https://candidato.ar.computrabajo.com/candidate/cv/edit/" target="_blank"><i class="fas fa-briefcase"></i> Computrabajo</a>
+        </p>
+    </footer>
+
+    <button id="back-to-top" title="Volver arriba" aria-label="Volver al inicio de la página"><i class="fas fa-arrow-up"></i></button>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        // Preloader
+        window.addEventListener('load', () => {
+            const preloader = document.getElementById('preloader');
+            preloader.style.display = 'none';
+        });
+
+        // Gráfico de habilidades
+        document.addEventListener('DOMContentLoaded', () => {
+            const ctx = document.getElementById('skillsChart').getContext('2d');
+            new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: ['SQL', 'BigQuery', 'Tableau', 'Power BI', 'R', 'Excel', 'Google Sheets', 'Python', 'HTML/CSS', 'JavaScript'],
+                    datasets: [
+                        {
+                            label: 'Nivel de Competencia (%)',
+                            data: [90, 85, 80, 75, 85, 95, 90, 60, 85, 80],
+                            backgroundColor: 'rgba(30, 58, 138, 0.5)',
+                            borderColor: 'rgba(30, 58, 138, 1)',
+                            borderWidth: 1,
+                            yAxisID: 'y'
+                        },
+                        {
+                            label: 'Proyectos Completados',
+                            data: [5, 4, 3, 3, 4, 6, 5, 2, 3, 2],
+                            type: 'line',
+                            borderColor: 'rgba(249, 115, 22, 1)',
+                            borderWidth: 2,
+                            fill: false,
+                            yAxisID: 'y1'
+                        }
+                    ]
+                },
+                options: {
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            title: { display: true, text: 'Competencia (%)' }
+                        },
+                        y1: {
+                            beginAtZero: true,
+                            position: 'right',
+                            title: { display: true, text: 'Proyectos' },
+                            grid: { drawOnChartArea: false }
+                        }
+                    }
+                }
+            });
+
+            // Navegación suave
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    document.querySelector(this.getAttribute('href')).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                });
+            });
+
+            // Botón Volver arriba
+            const backToTop = document.getElementById('back-to-top');
+            window.addEventListener('scroll', () => {
+                backToTop.style.display = window.scrollY > 300 ? 'block' : 'none';
+            });
+            backToTop.addEventListener('click', () => {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+        });
+    </script>
+</body>
+</html>

@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Anthony Colmenares - Analista de Datos & Desarrollador Web</title>
-    <meta name="description" content="Portafolio de Anthony Colmenares, analista de datos y desarrollador web junior en CABA, Argentina. Especializado en SQL, BigQuery, Tableau, Power BI, Python, CSS, JavaScript, con proyectos en Fórmula 1, Bellabeat, y desarrollo web. Certificado por Coursera, Coderhouse y Santander Open Academy.">
-    <meta name="keywords" content="analista de datos, desarrollador web, SQL, BigQuery, Tableau, Power BI, Python, CSS, JavaScript, Google Data Analytics, Coderhouse, Santander Open Academy, Fórmula 1, Bellabeat, Argentina, CABA">
+    <meta name="description" content="Portafolio de Anthony Colmenares, analista de datos y desarrollador web junior en CABA, Argentina. Especializado en SQL, BigQuery, Tableau, Power BI, Python, R, CSS, JavaScript, con proyectos en Fórmula 1, Bellabeat, y desarrollo web. Certificado por Coursera, Coderhouse y Santander Open Academy.">
+    <meta name="keywords" content="analista de datos, desarrollador web, SQL, BigQuery, Tableau, Power BI, Python, R, CSS, JavaScript, Google Data Analytics, Coderhouse, Santander Open Academy, Fórmula 1, Bellabeat, Argentina, CABA">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
@@ -23,28 +23,31 @@
         }
 
         /* Preloader */
-        #preloader {
+        .preloader {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: #1E3A8A;
+            background: #f0f4f8;
             display: flex;
             justify-content: center;
             align-items: center;
             z-index: 9999;
+            transition: opacity 0.5s ease;
         }
-
-        .loader {
-            border: 8px solid #f3f3f3;
-            border-top: 8px solid #F97316;
+        .preloader.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+        .spinner {
+            border: 4px solid #F97316;
+            border-top: 4px solid #1E3A8A;
             border-radius: 50%;
-            width: 50px;
-            height: 50px;
+            width: 40px;
+            height: 40px;
             animation: spin 1s linear infinite;
         }
-
         @keyframes spin {
             0% { transform: rotate(0deg); }
             100% { transform: rotate(360deg); }
@@ -138,15 +141,17 @@
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
         }
 
-        .project-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
+        .project-container {
             max-width: 1200px;
             margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
         }
 
         .project-card {
+            display: flex;
+            align-items: center;
             background: white;
             padding: 25px;
             border-radius: 12px;
@@ -159,11 +164,26 @@
             box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
         }
 
-        .project-card iframe {
-            width: 100%;
-            height: 300px;
-            border: none;
+        .project-card img, .project-card iframe {
+            width: 50%;
+            max-width: 500px;
+            height: auto;
             border-radius: 8px;
+            margin: 0 20px;
+        }
+
+        .project-content {
+            flex: 1;
+            text-align: left;
+        }
+
+        .project-content h3 {
+            font-size: 1.8em;
+            margin-bottom: 10px;
+        }
+
+        .project-content p {
+            font-size: 1.1em;
             margin-bottom: 15px;
         }
 
@@ -172,11 +192,52 @@
             text-decoration: none;
             font-weight: 600;
             font-size: 1.1em;
-            margin: 0 10px;
+            margin-right: 10px;
         }
 
         .project-link:hover {
             text-decoration: underline;
+        }
+
+        .left-image .project-content {
+            order: 2;
+        }
+
+        .left-image img, .left-image iframe {
+            order: 1;
+        }
+
+        .certifications-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .certification-card {
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            text-align: left;
+        }
+
+        .certification-card img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            margin-bottom: 15px;
+        }
+
+        .certification-card h3 {
+            font-size: 1.5em;
+            margin-bottom: 10px;
+        }
+
+        .certification-card p {
+            font-size: 1em;
+            margin-bottom: 15px;
         }
 
         form {
@@ -246,16 +307,24 @@
             .hero {
                 padding: 80px 20px;
             }
-            .project-card iframe {
-                height: 200px;
+            .project-card {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            .project-card img, .project-card iframe {
+                width: 100%;
+                margin: 0 0 20px 0;
+            }
+            .project-content {
+                order: 1 !important;
             }
         }
     </style>
 </head>
 <body>
     <!-- Preloader -->
-    <div id="preloader">
-        <div class="loader"></div>
+    <div class="preloader">
+        <div class="spinner"></div>
     </div>
 
     <!-- Barra de Navegación -->
@@ -265,6 +334,7 @@
             <li><a href="#about"><i class="fas fa-user"></i> Sobre Mí</a></li>
             <li><a href="#skills"><i class="fas fa-tools"></i> Habilidades</a></li>
             <li><a href="#projects"><i class="fas fa-project-diagram"></i> Proyectos</a></li>
+            <li><a href="#certifications"><i class="fas fa-certificate"></i> Certificaciones</a></li>
             <li><a href="#contact"><i class="fas fa-envelope"></i> Contacto</a></li>
         </ul>
     </nav>
@@ -295,25 +365,110 @@
     <!-- Sección Proyectos -->
     <section id="projects">
         <h2><i class="fas fa-project-diagram"></i> Proyectos</h2>
-        <div class="project-grid">
+        <div class="project-container">
             <div class="project-card">
-                <h3>Análisis de Desempeño en Fórmula 1 2025</h3>
-                <iframe src="https://public.tableau.com/views/VISINGENERALDELCAMPEONATOYDESEMPEODEPILOTOSDELATEMPORADA2025DEF1/Historia2?:language=es-ES&:display_count=n&:origin=viz_share_link&:showVizHome=no" title="Dashboard Fórmula 1" alt="Dashboard interactivo de análisis de desempeño de pilotos y equipos en la temporada 2025 de Fórmula 1"></iframe>
-                <p>Analicé el rendimiento de pilotos y equipos en la temporada 2025 de Fórmula 1 usando datos de la API de Ergast. Creé visualizaciones interactivas en Power BI y Google Sheets para mostrar tendencias en posiciones, puntos y circuitos.</p>
-                <a href="https://medium.com/@colmeony/%EF%B8%8F-an%C3%A1lisis-de-desempe%C3%B1o-en-el-campeonato-de-f%C3%B3rmula-1-2025-f8c36b822a56" class="project-link" target="_blank">Ver Detalles</a>
+                <div class="project-content">
+                    <h3>Análisis de Desempeño en Fórmula 1 2025</h3>
+                    <p>Analicé el rendimiento de pilotos y equipos en la temporada 2025 de Fórmula 1 usando datos de la API de Ergast. Creé visualizaciones interactivas en Power BI y Google Sheets para mostrar tendencias en posiciones, puntos y circuitos.</p>
+                    <a href="https://medium.com/@colmeony/%EF%B8%8F-an%C3%A1lisis-de-desempe%C3%B1o-en-el-campeonato-de-f%C3%B3rmula-1-2025-f8c36b822a56" class="project-link" target="_blank">Ver Detalles</a>
+                </div>
+                <img src="images/f1-dashboard.png" alt="Dashboard de análisis de Fórmula 1 2025 en Power BI">
+            </div>
+            <div class="project-card left-image">
+                <img src="images/bellabeat-dashboard.png" alt="Dashboard de análisis de actividad física para Bellabeat en Power BI">
+                <div class="project-content">
+                    <h3>Análisis de Datos para Bellabeat</h3>
+                    <p>Realicé un análisis integral de datos de actividad física para Bellabeat, identificando patrones en pasos y calorías diarias con SQL y Tableau, y profundizando en tendencias de usuarios con Python y Power BI para proponer estrategias de marketing y crecimiento.</p>
+                    <a href="https://medium.com/@colmeony/reporte-an%C3%A1lisis-de-datos-para-impulsar-el-crecimiento-de-bellabeat-43c59991b573" class="project-link" target="_blank">Ver Detalles Parte 1</a> | 
+                    <a href="https://medium.com/@colmeony/portafolio-an%C3%A1lisis-de-datos-para-impulsar-el-crecimiento-de-bellabeat-ca53fb1211b8" class="project-link" target="_blank">Ver Detalles Parte 2</a>
+                </div>
             </div>
             <div class="project-card">
-                <h3>Análisis de Datos para Bellabeat</h3>
-                <iframe src="https://public.tableau.com/views/Graficosdelarelacinentreactividadcaloriasquemadasyhorariosdeactividad_/Historia2?:language=es-ES&:display_count=n&:origin=viz_share_link&:showVizHome=no" title="Dashboard Bellabeat" alt="Dashboard interactivo de análisis de actividad física para Bellabeat, mostrando patrones en pasos y calorías"></iframe>
-                <p>Realicé un análisis integral de datos de actividad física para Bellabeat, identificando patrones en pasos y calorías diarias con SQL y Tableau, y profundizando en tendencias de usuarios con Python y Power BI para proponer estrategias de marketing y crecimiento.</p>
-                <a href="https://medium.com/@colmeony/reporte-an%C3%A1lisis-de-datos-para-impulsar-el-crecimiento-de-bellabeat-43c59991b573" class="project-link" target="_blank">Ver Detalles Parte 1</a> | 
-                <a href="https://medium.com/@colmeony/portafolio-an%C3%A1lisis-de-datos-para-impulsar-el-crecimiento-de-bellabeat-ca53fb1211b8" class="project-link" target="_blank">Ver Detalles Parte 2</a>
-            </div>
-            <div class="project-card">
-                <h3>Portafolio Web Personal</h3>
+                <div class="project-content">
+                    <h3>Portafolio Web Personal</h3>
+                    <p>Desarrollé un portafolio web responsivo usando HTML, CSS y JavaScript, con animaciones, gráficos interactivos (Chart.js), y dashboards incrustados de Tableau Public. Optimicé el diseño para SEO y accesibilidad.</p>
+                    <a href="https://github.com/AnthonyColmenares/cv-AnthonyC" class="project-link" target="_blank">Ver Código</a>
+                </div>
                 <iframe src="https://AnthonyColmenares.github.io/cv-AnthonyC" title="Portafolio Web" alt="Portafolio web personal con diseño responsivo y animaciones"></iframe>
-                <p>Desarrollé un portafolio web responsivo usando HTML, CSS y JavaScript, con animaciones, gráficos interactivos (Chart.js), y dashboards incrustados de Tableau Public. Optimicé el diseño para SEO y accesibilidad.</p>
-                <a href="https://github.com/AnthonyColmenares/cv-AnthonyC" class="project-link" target="_blank">Ver Código</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección Certificaciones -->
+    <section id="certifications">
+        <h2><i class="fas fa-certificate"></i> Certificaciones</h2>
+        <div class="certifications-grid">
+            <div class="certification-card">
+                <h3>Foundations: Data, Data, Everywhere</h3>
+                <a href="https://www.coursera.org/account/accomplishments/verify/LL1OBVHROQ3R" target="_blank">
+                    <img src="https://i.ibb.co/bRzMt5vd/data-everywhere.png" alt="Certificado Foundations: Data, Data, Everywhere">
+                </a>
+                <p>Aprendí los fundamentos del análisis de datos, incluyendo pensamiento analítico, resolución de problemas basada en datos, uso de hojas de cálculo (Excel, Google Sheets), consultas básicas en SQL, y creación de visualizaciones iniciales.</p>
+                <a href="https://www.coursera.org/account/accomplishments/verify/LL1OBVHROQ3R" class="project-link" target="_blank">Verificar Certificado</a>
+            </div>
+            <div class="certification-card">
+                <h3>Prepare Data for Exploration</h3>
+                <a href="https://www.coursera.org/account/accomplishments/verify/WJN52NDYDHO6" target="_blank">
+                    <img src="https://i.ibb.co/8D2XwWJf/Prepare-data-For-Exploration.png" alt="Certificado Prepare Data for Exploration">
+                </a>
+                <p>Desarrollé habilidades para recopilar y organizar datos, gestionar fuentes de datos, limpiar datos, estructurar datos de manera efectiva, y aplicar principios éticos en el manejo de datos.</p>
+                <a href="https://www.coursera.org/account/accomplishments/verify/WJN52NDYDHO6" class="project-link" target="_blank">Verificar Certificado</a>
+            </div>
+            <div class="certification-card">
+                <h3>Ask Questions to Make Data-Driven Decisions</h3>
+                <a href="https://www.coursera.org/account/accomplishments/verify/R4T3TEOZR10J" target="_blank">
+                    <img src="https://i.ibb.co/0RRk445R/ask-question-to.png" alt="Certificado Ask Questions to Make Data-Driven Decisions">
+                </a>
+                <p>Aprendí a formular preguntas efectivas para decisiones basadas en datos, usar Excel y SQL para responderlas, y comunicar resultados de manera clara a los interesados.</p>
+                <a href="https://www.coursera.org/account/accomplishments/verify/R4T3TEOZR10J" class="project-link" target="_blank">Verificar Certificado</a>
+            </div>
+            <div class="certification-card">
+                <h3>Process Data from Dirty to Clean</h3>
+                <a href="https://www.coursera.org/account/accomplishments/verify/ZRP0HZJP69LG" target="_blank">
+                    <img src="https://i.ibb.co/tP2Gvz3s/process-data.png" alt="Certificado Process Data from Dirty to Clean">
+                </a>
+                <p>Adquirí habilidades para limpiar datos "sucios", manejar datos faltantes, verificar la integridad de datos, y documentar procesos de limpieza usando SQL y hojas de cálculo.</p>
+                <a href="https://www.coursera.org/account/accomplishments/verify/ZRP0HZJP69LG" class="project-link" target="_blank">Verificar Certificado</a>
+            </div>
+            <div class="certification-card">
+                <h3>Analyze Data to Answer Questions</h3>
+                <a href="https://www.coursera.org/account/accomplishments/verify/L0AEC2PYNG7Z" target="_blank">
+                    <img src="https://i.ibb.co/273K0wnc/analyze.png" alt="Certificado Analyze Data to Answer Questions">
+                </a>
+                <p>Realicé análisis exploratorios, escribí consultas SQL avanzadas, apliqué funciones estadísticas en Excel/Google Sheets, y creé visualizaciones para responder preguntas de negocio.</p>
+                <a href="https://www.coursera.org/account/accomplishments/verify/L0AEC2PYNG7Z" class="project-link" target="_blank">Verificar Certificado</a>
+            </div>
+            <div class="certification-card">
+                <h3>Share Data Through the Art of Visualization</h3>
+                <a href="https://www.coursera.org/account/accomplishments/verify/9ERUYBIGFA2T" target="_blank">
+                    <img src="https://i.ibb.co/hxXnVpKb/share-data.png" alt="Certificado Share Data Through the Art of Visualization">
+                </a>
+                <p>Aprendí a diseñar visualizaciones impactantes con Tableau, crear dashboards interactivos, y usar técnicas de storytelling para comunicar hallazgos de datos a audiencias técnicas y no técnicas.</p>
+                <a href="https://www.coursera.org/account/accomplishments/verify/9ERUYBIGFA2T" class="project-link" target="_blank">Verificar Certificado</a>
+            </div>
+            <div class="certification-card">
+                <h3>Data Analysis with R Programming</h3>
+                <a href="https://www.coursera.org/account/accomplishments/verify/GO7UD4Q6YZP2" target="_blank">
+                    <img src="https://i.ibb.co/LX8V6yZz/r-programacion.png" alt="Certificado Data Analysis with R Programming">
+                </a>
+                <p>Desarrollé habilidades en programación con R, limpieza y manipulación de datos, creación de visualizaciones con ggplot2, y análisis estadístico básico para resolver problemas de datos.</p>
+                <a href="https://www.coursera.org/account/accomplishments/verify/GO7UD4Q6YZP2" class="project-link" target="_blank">Verificar Certificado</a>
+            </div>
+            <div class="certification-card">
+                <h3>Google Data Analytics Capstone: Complete a Case Study</h3>
+                <a href="https://www.coursera.org/account/accomplishments/verify/BBVY3MAK1H4E" target="_blank">
+                    <img src="https://i.ibb.co/GvCYPTjx/caso-de-estudio.png" alt="Certificado Google Data Analytics Capstone">
+                </a>
+                <p>Apliqué el ciclo completo de análisis de datos en un caso práctico, desde la formulación de preguntas hasta la presentación de resultados, usando SQL, Tableau, y hojas de cálculo.</p>
+                <a href="https://www.coursera.org/account/accomplishments/verify/BBVY3MAK1H4E" class="project-link" target="_blank">Verificar Certificado</a>
+            </div>
+            <div class="certification-card">
+                <h3>Google Data Analytics Professional Certificate</h3>
+                <a href="https://www.coursera.org/account/accomplishments/professional-cert/5LBXJZVE2PKE" target="_blank">
+                    <img src="https://i.ibb.co/xSkTSSV6/certificado-profesional.png" alt="Certificado Google Data Analytics Professional Certificate">
+                </a>
+                <p>Consolidé habilidades en análisis de datos, abarcando formulación de preguntas, limpieza y procesamiento de datos, análisis con SQL y R, visualización con Tableau, y comunicación de resultados para decisiones empresariales.</p>
+                <a href="https://www.coursera.org/account/accomplishments/professional-cert/5LBXJZVE2PKE" class="project-link" target="_blank">Verificar Certificado</a>
             </div>
         </div>
     </section>
@@ -321,7 +476,7 @@
     <!-- Sección Contacto -->
     <section id="contact">
         <h2><i class="fas fa-envelope"></i> Contacto</h2>
-        <form id="contactForm" action="https://formspree.io/f/xxxxxxxx" method="POST">
+        <form id="contactForm" action="https://formspree.io/f/TU_ENDPOINT_FORMSPREE" method="POST">
             <input type="text" id="name" name="name" placeholder="Nombre" required>
             <input type="email" id="email" name="email" placeholder="Correo Electrónico" required>
             <textarea id="message" name="message" placeholder="Mensaje" required></textarea>
@@ -344,8 +499,9 @@
     <script>
         // Preloader
         window.addEventListener('load', () => {
-            const preloader = document.getElementById('preloader');
-            preloader.style.display = 'none';
+            const preloader = document.querySelector('.preloader');
+            preloader.classList.add('hidden');
+            setTimeout(() => preloader.remove(), 500);
         });
 
         // Gráfico de habilidades
