@@ -85,6 +85,51 @@
             color: #F97316;
         }
 
+        /* Menú hamburguesa para móviles */
+        .hamburger {
+            display: none;
+            font-size: 1.8em;
+            color: white;
+            background: none;
+            border: none;
+            padding: 15px;
+            cursor: pointer;
+        }
+
+        .nav-menu {
+            display: flex;
+            justify-content: center;
+        }
+
+        @media (max-width: 768px) {
+            .hamburger {
+                display: block;
+                position: absolute;
+                top: 0;
+                right: 0;
+            }
+
+            .nav-menu {
+                display: none;
+                flex-direction: column;
+                background: linear-gradient(90deg, #1E3A8A, #3B82F6);
+                position: absolute;
+                top: 60px;
+                left: 0;
+                width: 100%;
+                padding: 10px 0;
+            }
+
+            .nav-menu.active {
+                display: flex;
+            }
+
+            nav ul li {
+                margin: 10px 0;
+                text-align: center;
+            }
+        }
+
         section {
             padding: 100px 20px;
             text-align: center;
@@ -297,13 +342,6 @@
         }
 
         @media (max-width: 768px) {
-            nav ul {
-                flex-direction: column;
-                text-align: center;
-            }
-            nav ul li {
-                margin: 15px 0;
-            }
             .hero {
                 padding: 80px 20px;
             }
@@ -329,7 +367,8 @@
 
     <!-- Barra de Navegación -->
     <nav>
-        <ul>
+        <button class="hamburger" aria-label="Abrir menú"><i class="fas fa-bars"></i></button>
+        <ul class="nav-menu">
             <li><a href="#home"><i class="fas fa-home"></i> Inicio</a></li>
             <li><a href="#about"><i class="fas fa-user"></i> Sobre Mí</a></li>
             <li><a href="#skills"><i class="fas fa-tools"></i> Habilidades</a></li>
@@ -362,7 +401,7 @@
         </div>
     </section>
 
-    <!-- Sección Proyectos -->
+   <!-- Sección Proyectos -->
     <section id="projects">
         <h2><i class="fas fa-project-diagram"></i> Proyectos</h2>
         <div class="project-container">
@@ -476,10 +515,11 @@
     <!-- Sección Contacto -->
     <section id="contact">
         <h2><i class="fas fa-envelope"></i> Contacto</h2>
-        <form id="contactForm" action="https://formspree.io/f/mldpngkw" method="POST">
-            <input type="text" id="name" name="name" placeholder="Nombre" required>
-            <input type="email" id="email" name="email" placeholder="Correo Electrónico" required>
-            <textarea id="message" name="message" placeholder="Mensaje" required></textarea>
+        <form action="https://formspree.io/f/mldpngkw" method="POST">
+            <input type="text" name="name" placeholder="Nombre" required>
+            <input type="email" name="email" placeholder="Correo Electrónico" required>
+            <textarea name="message" placeholder="Mensaje" required></textarea>
+            <input type="hidden" name="_subject" value="Nuevo mensaje desde el portafolio de Anthony Colmenares">
             <input type="hidden" name="_next" value="https://AnthonyColmenares.github.io/cv-AnthonyC/#contact">
             <button type="submit" class="btn"><i class="fas fa-paper-plane"></i> Enviar</button>
         </form>
@@ -504,8 +544,23 @@
             setTimeout(() => preloader.remove(), 500);
         });
 
-        // Gráfico de habilidades
+        // Menú hamburguesa
         document.addEventListener('DOMContentLoaded', () => {
+            const hamburger = document.querySelector('.hamburger');
+            const navMenu = document.querySelector('.nav-menu');
+
+            hamburger.addEventListener('click', () => {
+                navMenu.classList.toggle('active');
+            });
+
+            // Cerrar el menú al hacer clic en un enlace
+            document.querySelectorAll('.nav-menu a').forEach(link => {
+                link.addEventListener('click', () => {
+                    navMenu.classList.remove('active');
+                });
+            });
+
+            // Gráfico de habilidades
             const ctx = document.getElementById('skillsChart').getContext('2d');
             new Chart(ctx, {
                 type: 'bar',
@@ -529,7 +584,7 @@
                             beginAtZero: true,
                             title: { display: true, text: 'Competencia (%)' }
                         },
-                        
+                       
                     }
                 }
             });
